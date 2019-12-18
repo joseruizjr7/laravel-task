@@ -38,7 +38,16 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sub = $request->isMethod('put') ? Subscriber::findOrFail($request->subscriber_id) : new Subscriber;
+
+        $sub->id = $request->input('subscriber_id');
+        $sub->email = $request->input('email');
+        $sub->name = $request->input('name');
+        $sub->state = $request->input('state');
+
+        if($sub->save()) {
+            return new SubscriberResource($sub);
+        }
     }
 
     /**
@@ -47,9 +56,10 @@ class SubscriberController extends Controller
      * @param  \App\Subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
-    public function show(Subscriber $subscriber)
+    public function show($id)
     {
-        //
+        $sub = Subscriber::findOrFail($id);
+        return new SubscriberResource($sub);
     }
 
     /**
@@ -81,8 +91,13 @@ class SubscriberController extends Controller
      * @param  \App\Subscriber  $subscriber
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subscriber $subscriber)
+    public function destroy($id)
     {
-        //
+        $sub = Subscriber::findOrFail($id);
+
+        if($sub->delete()) {
+            return new SubscriberResource($sub);
+        }
+        
     }
 }

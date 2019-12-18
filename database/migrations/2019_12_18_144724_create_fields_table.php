@@ -15,7 +15,8 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('subscriber_id')->references('id')->on('subscribers')->onDelete('cascade');
+            $table->unsignedBigInteger('subscriber_id');
+            $table->foreign('subscriber_id')->references('id')->on('subscribers')->onDelete('cascade');
             $table->string('title');
             $table->string('type');
             $table->timestamps();
