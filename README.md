@@ -1,3 +1,47 @@
+## Install this project
+
+``` bash
+# Install Dependencies
+composer install
+
+# Run Migrations
+php artisan migrate
+
+# Import Articles
+php artisan db:seed
+
+# Add virtual host if using Apache
+
+# If you get an error about an encryption key
+php artisan key:generate
+
+# Install JS Dependencies
+npm install
+
+# Watch Files
+npm run watch
+```
+
+### List all subscribers with links and meta
+``` bash
+GET api/subscribers
+```
+### Get single subscriber
+``` bash
+GET api/subscriber/{id}
+```
+
+### Delete subscriber
+``` bash
+DELETE api/subscriber/{id}
+```
+
+### Add subscriber
+``` bash
+POST api/subscriber
+```
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
