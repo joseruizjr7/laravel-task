@@ -21,7 +21,7 @@ class Subscriber extends JsonResource
             'id' => $this->id,
             'email' => $this->email,
             'name' => $this->name,
-            'state' => $this->state,
+            'state' => ucfirst($this->state),
             'fields' => FieldResource::collection($this->fields),
         ];
     }

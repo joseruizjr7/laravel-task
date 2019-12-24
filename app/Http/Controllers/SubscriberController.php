@@ -16,7 +16,7 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        $subs = Subscriber::paginate(10);
+        $subs = Subscriber::orderBy('created_at', 'desc')->paginate(50);
         return SubscriberResource::collection($subs);
     }
 
